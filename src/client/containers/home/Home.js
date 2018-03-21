@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import './Home.css';
+import './Home.scss';
 
 class Home extends React.Component {
   render() {

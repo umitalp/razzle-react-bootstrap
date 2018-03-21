@@ -20,7 +20,7 @@ import {
   FormText
 } from 'reactstrap';
 
-import './Developer.css';
+import './Developer.scss';
 
 class Developer extends React.Component {
   state = {

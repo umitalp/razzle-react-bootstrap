@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import './Navigation.css';
+import './Navigation.scss';
 
 class Navigation extends React.Component {
   render() {

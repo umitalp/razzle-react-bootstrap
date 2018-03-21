@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import LoginForm from '../../components/forms/LoginForm'
 
-import './Login.css';
+import './Login.scss';
 
 class Login extends React.Component {
   state = {

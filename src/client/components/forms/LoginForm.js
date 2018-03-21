@@ -39,15 +39,10 @@ const renderField = field => {
                 <Label for={label}>{label}</Label>
                 <Input type={type} placeholder={placeholder} id={label} {...input} />
             </FormGroup>
-            {touched && error &&
-                <Alert color="warning">
-                    {error}
-                </Alert>
-            }
+            {touched && error && <Alert color="warning">{error}</Alert>}
         </div>
     )
   }
-
 
 const LoginForm = props => {
   const { handleSubmit } = props
