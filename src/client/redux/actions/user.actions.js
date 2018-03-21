@@ -1,4 +1,4 @@
-import { userConstants } from '../constants'
+import { userTypes } from '../types'
 
 export default {
   login,
@@ -7,9 +7,9 @@ export default {
 
 const login = (username, password) => {
   return dispatch => {
-    dispatch(userConstants.LOGIN_REQUEST)
+    dispatch(userTypes.LOGIN_REQUEST)
     setTimeout(() => {
-      dispatch(userConstants.LOGIN_SUCCESS)
+      dispatch(userTypes.LOGIN_SUCCESS)
     }, 1000)
   }
 }
@@ -17,7 +17,7 @@ const login = (username, password) => {
 const logout = () => {
   return dispatch => {
     setTimeout(() => {
-      dispatch(userConstants.LOGOUT)
+      dispatch(userTypes.LOGOUT)
     }, 1000)
   }
 }
