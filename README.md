@@ -1,12 +1,12 @@
 ## Another React-Starter-App
 
-:fire: Created with [RAZZLE link](https://github.com/jaredpalmer/razzle)
+:fire: Created with [RAZZLE](https://github.com/jaredpalmer/razzle)
 
 ### Inside
 - React
-- [Reactstrap link](https://github.com/reactstrap/reactstrap)
-- [Redux link](https://github.com/reactjs/redux)
-- [Redux-Form link](https://github.com/erikras/redux-form)
+- [Reactstrap](https://github.com/reactstrap/reactstrap)
+- [Redux](https://github.com/reactjs/redux)
+- [Redux-Form](https://github.com/erikras/redux-form)
 
 ### Quick Start
 
