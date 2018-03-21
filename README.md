@@ -1,30 +1,25 @@
-## Another React-Starter-Kit
-- :fire: Created with RAZZLEEEEE..!
+## Another React-Starter-App
+
+:fire: Created with [RAZZLE link](https://github.com/jaredpalmer/razzle)
 
 ### Inside
 - React
-- Reactstrap
-- Redux
-- Redux-Form
+- [Reactstrap link](https://github.com/reactstrap/reactstrap)
+- [Redux link](https://github.com/reactjs/redux)
+- [Redux-Form link](https://github.com/erikras/redux-form)
 
-## Quick Start
+### Quick Start
 
 ```bash
-git clone https://github.com/umitalp/ua-react.git
-
-```
-```bash
-cd ua-react
+git clone https://github.com/umitalp/razzle-react-setup.git
 
 ```
 
-```bash
-yarn
+cd to PATH
 
-```
 
 ```bash
-yarn start
+yarn && yarn start
 
 ```
 
