@@ -2,18 +2,28 @@
 - :fire: Created with RAZZLEEEEE..!
 
 ### Inside
-- REACT
-- REACTSTRAP
-- REDUX
-- REDUX-FORM
+- React
+- Reactstrap
+- Redux
+- Redux-Form
 
 ## Quick Start
 
 ```bash
+git clone https://github.com/umitalp/ua-starter-kit.git
 
 ```
 
-Then open http://localhost:3000/ to see your app. Your console should look like this:
+```bash
+yarn
+
+```
+
+```bash
+yarn start
+
+```
+
 ---
 MIT License
 
