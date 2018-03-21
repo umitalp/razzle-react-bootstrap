@@ -10,7 +10,11 @@
 ## Quick Start
 
 ```bash
-git clone https://github.com/umitalp/ua-starter-kit.git
+git clone https://github.com/umitalp/ua-react.git
+
+```
+```bash
+cd ua-react
 
 ```
 
