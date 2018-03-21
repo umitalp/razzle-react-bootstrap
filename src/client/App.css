@@ -1,0 +1,19 @@
+/* Override bootstrap styles */
+a {
+  color: beige;
+  text-decoration: none;
+}
+
+.btn {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+a:hover {
+  color: darkblue;
+  text-decoration: none;
+}
+
+.row {
+  margin: 1rem;
+}
