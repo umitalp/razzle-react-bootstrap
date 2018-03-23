@@ -1,25 +1,47 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import {
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    Collapse,
+    Nav
+} from 'reactstrap';
+
 import './Navigation.scss';
 
+const navigationLinks = [
+    {
+      href: '/',
+      name: 'Home'
+    }, {
+      href: '/login',
+      name: 'Login'
+    }, {
+      href: '/developer',
+      name: 'Developer'
+    }
+]
+
 class Navigation extends React.Component {
-  render() {
-    return (
-      <div className='navigation'>
-        <Nav className='container'>
-          <NavItem>
-            <NavLink><Link to='/'>Home</Link></NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink><Link to='/login'>Login</Link></NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink><Link to='/developer'>Developer</Link></NavLink>
-          </NavItem>
-        </Nav>
-      </div>
-    );
+    state = {
+        isOpen: false
+    }
+    
+    render() {
+        return (
+            <div style={{backgroundColor: 'black'}} >
+                <Navbar dark color="black" expand="sm">
+                    <NavbarBrand href="/">Nav Bar</NavbarBrand>
+                    <NavbarToggler onClick={() => this.setState({ isOpen: !this.state.isOpen})} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            {navigationLinks.map(link => <NavLink exact className='nav-link' to={link.href}>{link.name}</NavLink>)}
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
+        )
   }
 }
 
