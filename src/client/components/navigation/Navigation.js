@@ -8,8 +8,6 @@ import {
     Nav
 } from 'reactstrap';
 
-import './Navigation.scss';
-
 const navigationLinks = [
     {
       href: '/',
@@ -30,17 +28,15 @@ class Navigation extends React.Component {
     
     render() {
         return (
-            <div style={{backgroundColor: 'black'}} >
-                <Navbar dark color="black" expand="sm">
-                    <NavbarBrand href="/">Nav Bar</NavbarBrand>
-                    <NavbarToggler onClick={() => this.setState({ isOpen: !this.state.isOpen})} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            {navigationLinks.map(link => <NavLink exact className='nav-link' to={link.href}>{link.name}</NavLink>)}
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
+            <Navbar style={{backgroundColor: 'royalblue'}} dark expand="sm">
+                <NavbarBrand href="/">Nav Bar</NavbarBrand>
+                <NavbarToggler onClick={() => this.setState({ isOpen: !this.state.isOpen})} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        {navigationLinks.map(link => <NavLink exact className='nav-link' to={link.href}>{link.name}</NavLink>)}
+                    </Nav>
+                </Collapse>
+            </Navbar>
         )
   }
 }
