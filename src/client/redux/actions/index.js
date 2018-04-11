@@ -1,5 +1,6 @@
-import userActions from './user.actions'
+import { login, logout } from './user.actions'
 
 export {
-  userActions
+  login,
+  logout
 }

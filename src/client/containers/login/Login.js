@@ -1,25 +1,20 @@
 import React from 'react';
-import {
-  Container,
-  Row,
-  Col
-} from 'reactstrap';
-import LoginForm from '../../components/forms/LoginForm'
+import { Container, Row, Col } from 'reactstrap';
+import { connect } from 'react-redux'
+import { login, logout } from '../../redux/actions'
 
+import LoginForm from '../../components/forms/LoginForm'
 import './Login.scss';
 
 class Login extends React.Component {
-  state = {
-
-  }
   
   onSubmit = values => {
-    this.setState({
-      ...values
-    })
+    const { email, password } = values
+    this.props.login(email, password)
   }
 
   render() {
+    const { error, user } = this.props
     return (
       <Container>
         <Row>
@@ -27,7 +22,7 @@ class Login extends React.Component {
         </Row>
         <Row>
           <Col md="6">
-            <LoginForm onSubmit={this.onSubmit} />
+            <LoginForm _error={error} onSubmit={this.onSubmit} />
           </Col>
           <Col md="6">
             <h4>
@@ -36,12 +31,9 @@ class Login extends React.Component {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo est modi suscipit consequatur sapiente dolorum recusandae nam vero perferendis. Deleniti repudiandae in at asperiores consequuntur minus est. Molestias, amet qui.
             </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col md="6">
+            <h5>Current User</h5>
             <p>
-              {JSON.stringify(this.state, undefined, 2)}
+              {JSON.stringify(user, undefined, 2)}
             </p>
           </Col>
         </Row>
@@ -50,4 +42,15 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  loading: state.userReducers.loginLoading,
+  user: state.userReducers.currentUser,
+  error: state.userReducers.error
+})
+
+const mapDispatchToProps = {
+    login,
+    logout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

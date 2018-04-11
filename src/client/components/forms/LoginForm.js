@@ -44,7 +44,7 @@ const renderField = field => {
   }
 
 const LoginForm = props => {
-  const { handleSubmit } = props
+  const { handleSubmit, _error } = props
   return (
     <Form onSubmit={handleSubmit}>
         <Field
@@ -61,6 +61,7 @@ const LoginForm = props => {
             placeholder="Password..."
             component={renderField}
         />
+        {_error && <Alert color="danger">{_error}</Alert>}
         <Button type="submit" className="mt-3 mb-3" outline color="dark">Login</Button>
     </Form>
   )

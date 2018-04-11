@@ -1,4 +1,5 @@
 import React from 'react';
+// import { connect } from 'react-redux'
 import {
   Container,
   Row,
@@ -37,18 +38,28 @@ class Signup extends React.Component {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo est modi suscipit consequatur sapiente dolorum recusandae nam vero perferendis. Deleniti repudiandae in at asperiores consequuntur minus est. Molestias, amet qui.
             </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col md="6">
+            <h5>
+              Local State
+            </h5>
             <p>
               {JSON.stringify(this.state, undefined, 2)}
             </p>
           </Col>
         </Row>
       </Container>
-    );
+    )
   }
 }
+
+// const mapStateToProps = (state) => ({
+// 	selectedCategory: state.categoryReducer.selectedCategory
+// })
+
+// const mapDispatchToProps = {
+//     selectCategory,
+//     deSelectCategory
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Signup)
 
 export default Signup

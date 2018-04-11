@@ -2,21 +2,36 @@ import { userTypes } from '../types'
 
 const initialState = {
   currentUser: {},
+  error: undefined,
   loginLoading: false
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Login
     case userTypes.LOGIN_REQUEST:
-      return { ...state, loginLoading: true }
-    case userTypes.LOGIN_FAILURE:
-      return { ...state, loginLoading: false }
-      case userTypes.LOGIN_SUCCESS:
-      return { ...state, loginLoading: false, currentUser: { username: 'Demo User' } }
-    // Logout
+      return {
+        ...state,
+        loginLoading: true,
+        error: undefined
+      }
+    case userTypes.LOGIN_ERROR:
+      return {
+        ...state,
+        loginLoading: false,
+        error: action.error
+      }
+    case userTypes.LOGIN_SUCCESS:
+      return {
+        ...state,
+        loginLoading: false,
+        error: undefined,
+        currentUser: action.user
+      }
     case userTypes.LOGOUT:
-        return { ...state, currentUser: initialState.currentUser }
+        return {
+          ...state,
+          currentUser: {}
+        }
     default:
       return state
   }

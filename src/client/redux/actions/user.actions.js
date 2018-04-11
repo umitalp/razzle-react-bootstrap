@@ -1,20 +1,31 @@
 import { userTypes } from '../types'
+import axios from 'axios'
 
-export default {
-  login,
-  logout
-}
-
-const login = (username, password) => {
+export const login = (email, password) => {
   return dispatch => {
-    dispatch(userTypes.LOGIN_REQUEST)
-    setTimeout(() => {
-      dispatch(userTypes.LOGIN_SUCCESS)
-    }, 1000)
+    dispatch({
+      type: userTypes.LOGIN_REQUEST
+    })
+    axios.post('/api/user/login', {
+      email,
+      password
+    })
+    .then(response => {
+      dispatch({
+        type: userTypes.LOGIN_SUCCESS,
+        user: response.data
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: userTypes.LOGIN_ERROR,
+        error: error.response.data.message
+      })
+    })
   }
 }
 
-const logout = () => {
+export const logout = () => {
   return dispatch => {
     setTimeout(() => {
       dispatch(userTypes.LOGOUT)

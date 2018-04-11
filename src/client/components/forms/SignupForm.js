@@ -7,7 +7,7 @@ import {
     Label,
     Input,
     Form,
-    Alert
+    // Alert
 } from 'reactstrap'
 
 const validate = values => {
@@ -106,7 +106,7 @@ const SignupForm = props => {
             placeholder="Re-enter Password..."
             component={renderField}
         />
-        <Button type="submit" className="mt-3 mb-3" outline color="dark">Login</Button>
+        <Button type="submit" className="mt-3 mb-3" outline color="dark">Sign Up</Button>
     </Form>
   )
 }
