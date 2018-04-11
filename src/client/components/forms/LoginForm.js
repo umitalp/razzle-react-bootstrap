@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import {
     Button,
     FormGroup,
+    FormFeedback,
     Label,
     Input,
     Form,
@@ -34,13 +35,11 @@ const renderField = field => {
         meta: { touched, error }
     } = field
     return (
-        <div>
-            <FormGroup>
-                <Label for={label}>{label}</Label>
-                <Input type={type} placeholder={placeholder} id={label} {...input} />
-            </FormGroup>
-            {touched && error && <Alert color="warning">{error}</Alert>}
-        </div>
+        <FormGroup>
+            <Label for={label}>{label}</Label>
+            <Input invalid={touched && error} type={type} placeholder={placeholder} id={label} {...input} />
+            <FormFeedback>{error}</FormFeedback>
+        </FormGroup>
     )
   }
 

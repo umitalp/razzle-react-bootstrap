@@ -28,7 +28,7 @@ class Signup extends React.Component {
         </Row>
         <Row>
           <Col md="6">
-            {/* <LoginForm onSubmit={this.onSubmit} /> */}
+            <SignupForm onSubmit={this.onSubmit} />
           </Col>
           <Col md="6">
             <h4>
