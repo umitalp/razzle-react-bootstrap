@@ -32,7 +32,7 @@ class Navigation extends React.Component {
     render() {
         return (
             <Navbar style={{backgroundColor: 'royalblue'}} dark expand="sm">
-                <NavbarBrand href="/">Nav Bar</NavbarBrand>
+                <NavbarBrand href="/">Navigation</NavbarBrand>
                 <NavbarToggler onClick={() => this.setState({ isOpen: !this.state.isOpen})} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
