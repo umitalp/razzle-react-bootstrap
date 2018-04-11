@@ -1,29 +1,45 @@
 import express from 'express';
+import passport from 'passport'
 
 const userRouter = express.Router();
 
-/* GET ALL USERS */
-userRouter.get('/all', (req, res) => {
-    res.json({ message: 'Authorization failed' })
+const isLoggedIn = (req, res, next) => {
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated()) return next()
+
+    res.status(404).json({ message: 'Unauthorized.' })
+}
+
+userRouter.get('/me', isLoggedIn, (req, res) => { // Protected route
+    res.json(req.user)
 })
 
-/* GET USER BY ID */
-userRouter.get('/me', (req, res) => {
-    res.json({ message: 'You?' })
+userRouter.post('/login', (req, res, next) => {
+    passport.authenticate('local-login', (err, user, info) => {
+        console.log('Req body in login', user, err, info)
+        if(err) res.status(500).json(err)
+        if(!user) {
+            res.status(500).json(info)
+        } else if (user) {
+            req.logIn(user, (err) => {
+                if (err) return next(err)
+                return res.status(200).json(user)
+            });
+        }
+    })(req, res, next)
 })
 
-/* LOGIN USER */
-userRouter.post('/login', (req, res) => {
-    res.json({ token: 'Bearer fake_token' })
-})
 
-/* CREATE USER */
-userRouter.post('/create', (req, res) => {
-    res.json({
-        message: 'Created',
-        username: 'Your name',
-        email: 'Your email'
-    })
+userRouter.post('/signup', (req, res, next) => {
+    passport.authenticate('local-signup', (err, user, info) => {
+        console.log('Req body in sign up', user, err, info)
+        if(err) res.status(500).json(err)
+        if(!user) {
+            res.status(500).json(info)
+        } else if (user) {
+            res.status(200).json(user)
+        }
+    })(req, res, next)
 })
 
 export default userRouter

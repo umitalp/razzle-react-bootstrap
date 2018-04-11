@@ -4,11 +4,12 @@ import {
   Row,
   Col
 } from 'reactstrap';
-import LoginForm from '../../components/forms/LoginForm'
 
-import './Login.scss';
+import SignupForm from '../../components/forms/SignupForm'
 
-class Login extends React.Component {
+import './Signup.scss';
+
+class Signup extends React.Component {
   state = {
 
   }
@@ -23,11 +24,11 @@ class Login extends React.Component {
     return (
       <Container>
         <Row>
-          <h2>Log In</h2>
+          <h2>Sign Up</h2>
         </Row>
         <Row>
           <Col md="6">
-            <LoginForm onSubmit={this.onSubmit} />
+            {/* <LoginForm onSubmit={this.onSubmit} /> */}
           </Col>
           <Col md="6">
             <h4>
@@ -50,4 +51,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default Signup

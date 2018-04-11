@@ -10,14 +10,17 @@ import {
 
 const navigationLinks = [
     {
-      href: '/',
-      name: 'Home'
+        href: '/',
+        name: 'Home'
     }, {
-      href: '/login',
-      name: 'Login'
+        href: '/signup',
+        name: 'Sign Up'
     }, {
-      href: '/developer',
-      name: 'Developer'
+        href: '/login',
+        name: 'Log In'
+    }, {
+        href: '/developer',
+        name: 'Developer'
     }
 ]
 

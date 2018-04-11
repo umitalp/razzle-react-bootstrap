@@ -1,5 +1,5 @@
 {
-  "name": "ua-starter-kit",
+  "name": "razzle-react-bootstrap",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -9,12 +9,17 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "ignore-loader": "^0.1.2",
+    "mongoose": "^5.0.14",
     "node-sass": "^4.7.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "razzle": "^0.8.12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
