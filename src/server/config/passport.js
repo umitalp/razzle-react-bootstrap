@@ -4,12 +4,10 @@ import User from '../models/user'
 const configurePassport = (passport) => {
     
     passport.serializeUser((user, done) => {
-        console.log('Serialize user', user)
         done(null, user.id)
     })
 
     passport.deserializeUser((id, done) => {
-        console.log('Deserialize user', id)
         User.findById(id, (err, user) => {
             done(err, user)
         })

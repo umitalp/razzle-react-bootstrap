@@ -36,7 +36,9 @@ class Navigation extends React.Component {
                 <NavbarToggler onClick={() => this.setState({ isOpen: !this.state.isOpen})} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        {navigationLinks.map(link => <NavLink exact className='nav-link' to={link.href}>{link.name}</NavLink>)}
+                        {navigationLinks.map((link, index) => (
+                            <NavLink key={index} exact className='nav-link' to={link.href}>{link.name}</NavLink>
+                        ))}
                     </Nav>
                 </Collapse>
             </Navbar>
