@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt-nodejs'
 
-let userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     email : String,
     password : String,
 })
