@@ -142,7 +142,7 @@ class Developer extends React.Component {
                 <Label for="examplePassword">Password</Label>
                 <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
               </FormGroup>
-              {/* <FormGroup>
+              <FormGroup>
                 <Label for="exampleSelect">Select</Label>
                 <Input type="select" name="select" id="exampleSelect">
                   <option>1</option>
@@ -152,7 +152,7 @@ class Developer extends React.Component {
                   <option>5</option>
                 </Input>
               </FormGroup>
-              <FormGroup>
+              {/* <FormGroup>
                 <Label for="exampleSelectMulti">Select Multiple</Label>
                 <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
                   <option>1</option>
