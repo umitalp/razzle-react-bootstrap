@@ -9,6 +9,11 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case userTypes.GETME:
+      return {
+        ...state,
+        currentUser: action.user
+      };
     case userTypes.LOGIN_REQUEST:
       return {
         ...state,

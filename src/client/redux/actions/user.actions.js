@@ -1,6 +1,17 @@
 import { userTypes } from "../types";
 import axios from "axios";
 
+export const getme = () => {
+  return dispatch => {
+    axios.get("/api/user/me").then(response => {
+      dispatch({
+        type: userTypes.GETME,
+        user: response.data
+      });
+    });
+  };
+};
+
 export const login = (email, password) => {
   return dispatch => {
     dispatch({
@@ -28,9 +39,9 @@ export const login = (email, password) => {
 
 export const logout = () => {
   return dispatch => {
-    dispatch({ type: userTypes.LOGOUT });
-    // axios.post("/api/user/logout").then(response => {
-    // });
+    axios.get("/api/user/logout").then(response => {
+      dispatch({ type: userTypes.LOGOUT });
+    });
   };
 };
 

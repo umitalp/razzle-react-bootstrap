@@ -1,7 +1,8 @@
 import React from "react";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
-import { signup } from '../../redux/actions'
+import { signup } from "../../redux/actions";
 
 import SignupForm from "../../components/forms/SignupForm";
 
@@ -10,17 +11,24 @@ class Signup extends React.Component {
 
   onSubmit = values => {
     // TODD call http://localhost:3000/api/user/login
-    this.props.signup(values)
+    this.props.signup(values);
   };
 
   render() {
-    const { error, user, loading } = this.props
+    const { error, user, loading } = this.props;
+    if (user) {
+      return <Redirect to="/profile" />;
+    }
     return (
       <Container>
         <h2 className="mt-3">Sign Up</h2>
         <Row>
           <Col md="6">
-            <SignupForm _loading={loading} _error={error} onSubmit={this.onSubmit} />
+            <SignupForm
+              _loading={loading}
+              _error={error}
+              onSubmit={this.onSubmit}
+            />
           </Col>
           <Col md="6">
             <h4>Redux-Form Example</h4>
@@ -39,16 +47,16 @@ class Signup extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-	loading: state.userReducers.signupLoading,
+const mapStateToProps = state => ({
+  loading: state.userReducers.signupLoading,
   user: state.userReducers.currentUser,
   error: state.userReducers.error
-})
+});
 
 const mapDispatchToProps = {
   signup
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
 // export default Signup;

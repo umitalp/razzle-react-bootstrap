@@ -15,17 +15,6 @@ import {
   UncontrolledDropdown
 } from "reactstrap";
 
-const navigationLinks = [
-  {
-    href: "/",
-    name: "Home"
-  },
-  {
-    href: "/developer",
-    name: "Developer"
-  }
-];
-
 class Navigation extends React.Component {
   state = {
     isOpen: false
@@ -41,19 +30,23 @@ class Navigation extends React.Component {
         />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {navigationLinks.map((link, index) => (
-              <NavLink key={index} exact className="nav-link" to={link.href}>
-                {link.name}
+            {!user && (
+              <NavLink exact className="nav-link" to={"/"}>
+                Home
               </NavLink>
-            ))}
+            )}
+            <NavLink exact className="nav-link" to={"/developer"}>
+              Developer
+            </NavLink>
             {user && (
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   {user.name}
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Dashboard</DropdownItem>
-                  <DropdownItem>Settings</DropdownItem>
+                  <DropdownItem>
+                    <NavLink to="/profile">Dashboard</NavLink>
+                  </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem onClick={() => logout()}>Logout</DropdownItem>
                 </DropdownMenu>

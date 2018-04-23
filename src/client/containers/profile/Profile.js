@@ -1,8 +1,18 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Row, Col, Button, Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardText
+} from "reactstrap";
 import { connect } from "react-redux";
-import { login, logout } from "../../redux/actions";
+import { login } from "../../redux/actions";
 
 class Profile extends React.Component {
   render() {
@@ -14,18 +24,8 @@ class Profile extends React.Component {
       <Container>
         <Row>
           <Col md="6">
-            <Card>
-              <CardImg
-                top
-                width="100%"
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                alt="Card image cap"
-              />
-              <CardBody>
-                <CardTitle>Name</CardTitle>
-                <CardText>{user.name}</CardText>
-              </CardBody>
-            </Card>
+            <h5>Name</h5>
+            <p>{user.name}</p>
             <h5>Surname</h5>
             <p>{user.surname}</p>
             <h5>Email</h5>
@@ -63,7 +63,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  logout
+  login
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
