@@ -38,8 +38,14 @@ const configurePassport = (passport) => {
                 if (err) return done(err)
                 if (user) return done(null, false, { message: 'That email is already taken.' })
                 let newUser = new User()
+                const { name, surname, address, city, country } = req.body
                 newUser.email = email
                 newUser.password = newUser.generateHash(password)
+                newUser.name = name
+                newUser.surname = surname
+                newUser.address = address
+                newUser.city = city
+                newUser.country = country
                 newUser.save((err) => {
                     if (err) throw err
                     return done(null, newUser)

@@ -1,10 +1,11 @@
-import { userTypes } from '../types'
+import { userTypes } from "../types";
 
 const initialState = {
-  currentUser: {},
+  currentUser: undefined,
   error: undefined,
-  loginLoading: false
-}
+  loginLoading: false,
+  signupLoading: false
+};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,28 +14,47 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loginLoading: true,
         error: undefined
-      }
+      };
     case userTypes.LOGIN_ERROR:
       return {
         ...state,
         loginLoading: false,
         error: action.error
-      }
+      };
     case userTypes.LOGIN_SUCCESS:
       return {
         ...state,
         loginLoading: false,
         error: undefined,
         currentUser: action.user
-      }
+      };
     case userTypes.LOGOUT:
-        return {
-          ...state,
-          currentUser: {}
-        }
+      return {
+        ...state,
+        currentUser: undefined
+      };
+    case userTypes.SIGNUP_REQUEST:
+      return {
+        ...state,
+        signupLoading: true,
+        error: undefined
+      };
+    case userTypes.SIGNUP_ERROR:
+      return {
+        ...state,
+        signupLoading: false,
+        error: action.error
+      };
+    case userTypes.SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signupLoading: false,
+        error: undefined,
+        currentUser: action.user
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default userReducer
+export default userReducer;

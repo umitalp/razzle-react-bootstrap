@@ -14,15 +14,13 @@ class Login extends React.Component {
   }
 
   render() {
-    const { error, user } = this.props
+    const { error, user, loading } = this.props
     return (
       <Container>
-        <Row>
-          <h2>Log In</h2>
-        </Row>
+        <h2 className="mt-3">Log In</h2>
         <Row>
           <Col md="6">
-            <LoginForm _error={error} onSubmit={this.onSubmit} />
+            <LoginForm _loading={loading} _error={error} onSubmit={this.onSubmit} />
           </Col>
           <Col md="6">
             <h4>
