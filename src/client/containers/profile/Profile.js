@@ -1,16 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardText
-} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions";
 

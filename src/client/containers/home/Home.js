@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Redirect } from "react-router-dom";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import { login, logout } from "../../redux/actions";
 

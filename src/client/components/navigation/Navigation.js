@@ -1,11 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { login, logout } from "../../redux/actions";
+import { logout } from "../../redux/actions";
 import {
   Navbar,
   NavbarBrand,
-  NavItem,
   NavbarToggler,
   Collapse,
   Nav,
@@ -24,7 +23,7 @@ class Navigation extends React.Component {
     const { user, logout } = this.props;
     return (
       <Navbar style={{ backgroundColor: "royalblue" }} dark expand="sm">
-        <NavbarBrand>Navigation</NavbarBrand>
+        <NavbarBrand style={{ color: "white" }}>Navigation</NavbarBrand>
         <NavbarToggler
           onClick={() => this.setState({ isOpen: !this.state.isOpen })}
         />
