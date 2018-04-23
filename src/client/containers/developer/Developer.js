@@ -152,7 +152,7 @@ class Developer extends React.Component {
                   <option>5</option>
                 </Input>
               </FormGroup>
-              {/* <FormGroup>
+              <FormGroup>
                 <Label for="exampleSelectMulti">Select Multiple</Label>
                 <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
                   <option>1</option>
