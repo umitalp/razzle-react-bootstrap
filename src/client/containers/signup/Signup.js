@@ -5,8 +5,6 @@ import { signup } from '../../redux/actions'
 
 import SignupForm from "../../components/forms/SignupForm";
 
-import "./Signup.scss";
-
 class Signup extends React.Component {
   state = {};
 

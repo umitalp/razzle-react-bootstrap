@@ -1,37 +1,52 @@
-import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React from "react";
+import { NavLink, Redirect } from "react-router-dom";
+import { Container, Row, Col, Button } from "reactstrap";
+import { connect } from "react-redux";
+import { login, logout } from "../../redux/actions";
 
-import './Home.scss';
+import LoginForm from "../../components/forms/LoginForm";
 
 class Home extends React.Component {
+  onSubmit = values => {
+    const { email, password } = values;
+    this.props.login(email, password);
+  };
+
   render() {
+    const { error, user, loading } = this.props;
+    if(user) {
+      return <Redirect to="/profile" />
+    }
     return (
       <Container>
-        <Row><h2>Home</h2></Row>
         <Row>
-          <Col>
-            <Row><h1>Heading 1</h1></Row>
-            <Row><h2>Heading 2</h2></Row>
-            <Row><h3>Heading 3</h3></Row>
-            <Row><h4>Heading 4</h4></Row>
-            <Row><h5>Heading 5</h5></Row>
-            <Row><h6>Heading 6</h6></Row>
+          <Col md="6">
+            <h3>Login</h3>
+            <LoginForm
+              _loading={loading}
+              _error={error}
+              onSubmit={this.onSubmit}
+            />
+            <div className="d-flex justify-content-center ">
+              <NavLink exact to="/signup">
+                Signup
+              </NavLink>
+            </div>
           </Col>
-        </Row>
-        <Row>
-          <Col md='6'>
-            <Row>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum voluptate exercitationem consequuntur, debitis quisquam dolorum, quae esse blanditiis delectus fuga voluptatem beatae, similique doloremque nulla animi nisi id maiores. Eius.
-              </p>
-            </Row>
-          </Col>
-          <Col>
-            <Row md='6'>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum voluptate exercitationem consequuntur, debitis quisquam dolorum, quae esse blanditiis delectus fuga voluptatem beatae, similique doloremque nulla animi nisi id maiores. Eius.
-              </p>
-            </Row>
+          <Col md="6">
+            <h3>Lorem</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              voluptate exercitationem consequuntur, debitis quisquam dolorum,
+              quae esse blanditiis delectus fuga voluptatem beatae, similique
+              doloremque nulla animi nisi id maiores. Eius.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              voluptate exercitationem consequuntur, debitis quisquam dolorum,
+              quae esse blanditiis delectus fuga voluptatem beatae, similique
+              doloremque nulla animi nisi id maiores. Eius.
+            </p>
           </Col>
         </Row>
       </Container>
@@ -39,4 +54,15 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  loading: state.userReducers.loginLoading,
+  user: state.userReducers.currentUser,
+  error: state.userReducers.error
+});
+
+const mapDispatchToProps = {
+  login,
+  logout
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

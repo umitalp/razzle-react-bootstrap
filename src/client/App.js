@@ -6,7 +6,7 @@ import './App.scss'
 
 // Containers
 import Home from './containers/home/Home'
-import Login from './containers/login/Login'
+import Profile from './containers/profile/Profile'
 import Signup from './containers/signup/Signup'
 import Developer from './containers/developer/Developer'
 import Navigation from './components/navigation/Navigation'
@@ -16,7 +16,7 @@ const App = () => (
     <Navigation />
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/login' component={Login} />
+      <Route path='/profile' component={Profile} />
       <Route path='/signup' component={Signup} />
       <Route path='/developer' component={Developer} />
     </Switch>

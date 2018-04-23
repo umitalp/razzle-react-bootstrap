@@ -20,8 +20,6 @@ import {
   FormText
 } from 'reactstrap';
 
-import './Developer.scss';
-
 class Developer extends React.Component {
   state = {
     dropdown: false,

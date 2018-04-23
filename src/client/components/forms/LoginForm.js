@@ -70,9 +70,9 @@ const LoginForm = props => {
       />
       {_error && <Alert color="danger">{_error}</Alert>}
       {_loading ? (
-        <Label>Loading</Label>
+        <Label>Logging In</Label>
       ) : (
-        <Button type="submit" className="mt-3 mb-3" outline color="dark">
+        <Button block type="submit" className="mt-3 mb-3" color="primary">
           Login
         </Button>
       )}
