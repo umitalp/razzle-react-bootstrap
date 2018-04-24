@@ -58,7 +58,7 @@ const renderField = field => {
     <FormGroup>
       <Label for={label}>{label}</Label>
       <Input
-        invalid={touched && error}
+        invalid={touched && error && error.length > 0}
         type={type}
         placeholder={placeholder}
         id={label}

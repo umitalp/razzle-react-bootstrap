@@ -6,23 +6,14 @@ import {
   FormFeedback,
   Label,
   Input,
-  Form,
-  Alert
+  Form
 } from "reactstrap";
 
 const validate = values => {
   const errors = {};
-  if (!values.password) {
-    errors.password = "Required";
-  } else if (values.password.length < 6) {
-    errors.password = "Must be 6 characters or more";
+  if (!values.task) {
+    errors.task = "Required";
   }
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
-
   return errors;
 };
 
@@ -49,31 +40,22 @@ const renderField = field => {
   );
 };
 
-const LoginForm = props => {
-  const { handleSubmit, _error, _loading } = props;
+const NewTaskForm = props => {
+  const { handleSubmit, _loading } = props;
   return (
     <Form onSubmit={handleSubmit}>
       <Field
-        name="email"
-        type="email"
-        label="Email"
-        placeholder="Email..."
+        name="task"
+        type="text"
+        label="New Task"
+        placeholder="New Task..."
         component={renderField}
       />
-      <Field
-        password
-        name="password"
-        type="password"
-        label="Password"
-        placeholder="Password..."
-        component={renderField}
-      />
-      {_error && <Alert color="danger">{_error}</Alert>}
       {_loading ? (
-        <Label>Logging In</Label>
+        <Label>Adding New Task...</Label>
       ) : (
         <Button block type="submit" className="mt-3 mb-3" color="primary">
-          Login
+          Add Task
         </Button>
       )}
     </Form>
@@ -81,6 +63,6 @@ const LoginForm = props => {
 };
 
 export default reduxForm({
-  form: "loginForm",
+  form: "newTaskForm",
   validate
-})(LoginForm);
+})(NewTaskForm);

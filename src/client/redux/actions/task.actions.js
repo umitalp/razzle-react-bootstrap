@@ -8,9 +8,7 @@ export const getMyTasks = () => {
       .get("/api/task/me")
       .then(response => {
         const { Tasks } = response.data;
-        setTimeout(() => {
-          dispatch({ type: taskTypes.GET_MY_TASKS_SUCCESS, tasks: Tasks });
-        }, 1000); // Simulate server delay
+        dispatch({ type: taskTypes.GET_MY_TASKS_SUCCESS, tasks: Tasks });
       })
       .catch(error => {
         dispatch({ type: taskTypes.GET_MY_TASKS_ERROR, error });
@@ -18,10 +16,10 @@ export const getMyTasks = () => {
   };
 };
 
-export const addNewTask = (author, content) => {
+export const addNewTask = content => {
   return dispatch => {
     axios
-      .post("/api/task/add", { author, content })
+      .post("/api/task/add", { content })
       .then(response => {
         console.log("Add new task response", response);
       })

@@ -2,15 +2,21 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { connect } from "react-redux";
-import { login, getMyTasks } from "../../redux/actions";
+import { login, getMyTasks, addNewTask } from "../../redux/actions";
+import NewTaskForm from "../../components/forms/NewTaskForm";
 
 class Profile extends React.Component {
   componentDidMount() {
     this.props.getMyTasks();
   }
 
+  onSubmit = values => {
+    const { task } = values;
+    this.props.addNewTask(task);
+  };
+
   render() {
-    const { user, tasks, tasksLoading } = this.props;
+    const { user, tasks, tasksLoading, error } = this.props;
     if (!user) {
       return <Redirect to="/" />;
     }
@@ -36,11 +42,20 @@ class Profile extends React.Component {
             {tasksLoading ? (
               <p>Your tasks are being loaded...</p>
             ) : (
-              <ListGroup>
-                {tasks.map(task => (
-                  <ListGroupItem>{task.content}</ListGroupItem>
-                ))}
-              </ListGroup>
+              <div>
+                <ListGroup>
+                  {tasks.map((task, index) => (
+                    <ListGroupItem key={index}>{task.content}</ListGroupItem>
+                  ))}
+                </ListGroup>
+                <div className="mt-5">
+                  <NewTaskForm
+                    _loading={tasksLoading}
+                    _error={error}
+                    onSubmit={this.onSubmit}
+                  />
+                </div>
+              </div>
             )}
           </Col>
         </Row>
@@ -52,12 +67,14 @@ class Profile extends React.Component {
 const mapStateToProps = state => ({
   user: state.userReducers.currentUser,
   tasks: state.taskReducers.tasks,
-  tasksLoading: state.taskReducers.tasksLoading
+  tasksLoading: state.taskReducers.tasksLoading,
+  error: state.taskReducers.error
 });
 
 const mapDispatchToProps = {
   login,
-  getMyTasks
+  getMyTasks,
+  addNewTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -9,8 +9,6 @@ const isLoggedIn = (req, res, next) => {
 };
 
 taskRouter.get("/me", isLoggedIn, (req, res) => {
-  // Req.user is here
-  console.log("Get my tasks", req.user._id);
   Task.find({ author: req.user._id }, (err, tasks) => {
     if (err) return res.sendStatus(500).json({ Message: "Cant find any task" });
     res.json({ Tasks: tasks });
@@ -18,8 +16,6 @@ taskRouter.get("/me", isLoggedIn, (req, res) => {
 });
 
 taskRouter.post("/add", isLoggedIn, (req, res) => {
-  // Req.user is here
-  console.log("Add new task", req.body, req.user._id);
   Task.create(
     {
       author: req.user._id,

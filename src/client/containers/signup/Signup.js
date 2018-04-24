@@ -10,7 +10,6 @@ class Signup extends React.Component {
   state = {};
 
   onSubmit = values => {
-    // TODD call http://localhost:3000/api/user/login
     this.props.signup(values);
   };
 
