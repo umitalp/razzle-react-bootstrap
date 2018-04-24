@@ -47,7 +47,7 @@ const NewTaskForm = props => {
       <Field
         name="task"
         type="text"
-        label="New Task"
+        label="Add New Task"
         placeholder="New Task..."
         component={renderField}
       />

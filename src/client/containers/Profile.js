@@ -1,6 +1,19 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Row, Col, ListGroup, ListGroupItem, Button } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  ListGroup,
+  ListGroupItem,
+  Button,
+  Card,
+  CardBody,
+  CardImg,
+  CardTitle,
+  CardSubtitle,
+  CardText
+} from "reactstrap";
 import { connect } from "react-redux";
 import { login, getMyTasks, addNewTask, removeTask } from "../redux/actions";
 import NewTaskForm from "../components/forms/NewTaskForm";
@@ -16,8 +29,8 @@ class Profile extends React.Component {
   };
 
   deleteTask = id => {
-    this.props.removeTask(id)
-  }
+    this.props.removeTask(id);
+  };
 
   render() {
     const { user, tasks, tasksLoading, error } = this.props;
@@ -26,50 +39,63 @@ class Profile extends React.Component {
     }
     return (
       <Container>
+        <h3 className="mt-3">Dashboard</h3>
         <Row>
           <Col md="6">
-            <h5>Name</h5>
-            <p>{user.name}</p>
-            <h5>Surname</h5>
-            <p>{user.surname}</p>
-            <h5>Email</h5>
-            <p>{user.email}</p>
-            <h5>Address</h5>
-            <p>{user.address}</p>
-            <h5>City</h5>
-            <p>{user.city}</p>
-            <h5>Country</h5>
-            <p>{user.country}</p>
+            <Card>
+              <CardBody>
+                <CardTitle>User Details</CardTitle>
+                <CardSubtitle>Name</CardSubtitle>
+                <CardText>{user.name}</CardText>
+                <CardSubtitle>Surname</CardSubtitle>
+                <CardText>{user.surname}</CardText>
+                <CardSubtitle>Email</CardSubtitle>
+                <CardText>{user.email}</CardText>
+                <CardSubtitle>City</CardSubtitle>
+                <CardText>{user.city}</CardText>
+                <CardSubtitle>Country</CardSubtitle>
+                <CardText>{user.country}</CardText>
+              </CardBody>
+            </Card>
           </Col>
           <Col md="6">
-            <h3>Your Tasks</h3>
-            {tasksLoading ? (
-              <p>Your tasks are being loaded...</p>
-            ) : (
-              <div>
-                <ListGroup>
-                  {tasks.map((task, index) => (
-                    <ListGroupItem key={index}>
-                      <div className="d-flex justify-content-between" >
-                        <div className="d-flex align-items-center">
-                         {task.content}
-                        </div>
-                        <div>
-                          <Button onClick={() => this.deleteTask(task._id)}>Delete</Button>
-                        </div>
-                      </div>
-                    </ListGroupItem>
-                  ))}
-                </ListGroup>
-                <div className="mt-5">
-                  <NewTaskForm
-                    _loading={tasksLoading}
-                    _error={error}
-                    onSubmit={this.onSubmit}
-                  />
-                </div>
-              </div>
-            )}
+            <Card>
+              <CardBody>
+                <CardTitle>Tasks</CardTitle>
+                {tasksLoading ? (
+                  <p>Your tasks are being loaded...</p>
+                ) : (
+                  <div>
+                    <ListGroup>
+                      {tasks.map((task, index) => (
+                        <ListGroupItem key={index}>
+                          <div className="d-flex justify-content-between">
+                            <div className="d-flex align-items-center">
+                              {task.content}
+                            </div>
+                            <div>
+                              <Button
+                                color="warning"
+                                onClick={() => this.deleteTask(task._id)}
+                              >
+                                Delete
+                              </Button>
+                            </div>
+                          </div>
+                        </ListGroupItem>
+                      ))}
+                    </ListGroup>
+                    <div className="mt-5">
+                      <NewTaskForm
+                        _loading={tasksLoading}
+                        _error={error}
+                        onSubmit={this.onSubmit}
+                      />
+                    </div>
+                  </div>
+                )}
+              </CardBody>
+            </Card>
           </Col>
         </Row>
       </Container>

@@ -29,7 +29,7 @@ taskRouter.post("/add", isLoggedIn, (req, res) => {
 });
 
 taskRouter.post("/remove", isLoggedIn, (req, res) => {
-  Task.remove({ _id: req.body.id }, function (err) {
+  Task.remove({ _id: req.body.id }, err => {
     if (err) res.sendStatus(500).json({ Message: "Cant remove task" });
     res.json({ Message: "Task succesfully removed." });
   });
