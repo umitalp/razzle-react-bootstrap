@@ -2,8 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { connect } from "react-redux";
-import { login, getMyTasks, addNewTask } from "../../redux/actions";
-import NewTaskForm from "../../components/forms/NewTaskForm";
+import { login, getMyTasks, addNewTask } from "../redux/actions";
+import NewTaskForm from "../components/forms/NewTaskForm";
 
 class Profile extends React.Component {
   componentDidMount() {

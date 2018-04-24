@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
-import { signup } from "../../redux/actions";
+import { signup } from "../redux/actions";
 
-import SignupForm from "../../components/forms/SignupForm";
+import SignupForm from "../components/forms/SignupForm";
 
 class Signup extends React.Component {
   state = {};

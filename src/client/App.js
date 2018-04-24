@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 import { getme } from "./redux/actions";
 
 // Containers
-import Home from "./containers/home/Home";
-import Profile from "./containers/profile/Profile";
-import Signup from "./containers/signup/Signup";
-import Developer from "./containers/developer/Developer";
-import Navigation from "./components/navigation/Navigation";
+import Home from "./containers/Home";
+import Profile from "./containers/Profile";
+import Signup from "./containers/Signup";
+import Developer from "./containers/Developer";
+import Navigation from "./components/Navigation";
 
 class App extends React.Component {
   componentWillMount() {

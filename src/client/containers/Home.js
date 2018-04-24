@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
-import { login, logout } from "../../redux/actions";
+import { login, logout } from "../redux/actions";
 
-import LoginForm from "../../components/forms/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
 
 class Home extends React.Component {
   onSubmit = values => {
