@@ -1,12 +1,16 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { connect } from "react-redux";
-import { login } from "../../redux/actions";
+import { login, getMyTasks } from "../../redux/actions";
 
 class Profile extends React.Component {
+  componentDidMount() {
+    this.props.getMyTasks();
+  }
+
   render() {
-    const { user } = this.props;
+    const { user, tasks, tasksLoading } = this.props;
     if (!user) {
       return <Redirect to="/" />;
     }
@@ -28,19 +32,16 @@ class Profile extends React.Component {
             <p>{user.country}</p>
           </Col>
           <Col md="6">
-            <h3>Lorem</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              voluptate exercitationem consequuntur, debitis quisquam dolorum,
-              quae esse blanditiis delectus fuga voluptatem beatae, similique
-              doloremque nulla animi nisi id maiores. Eius.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              voluptate exercitationem consequuntur, debitis quisquam dolorum,
-              quae esse blanditiis delectus fuga voluptatem beatae, similique
-              doloremque nulla animi nisi id maiores. Eius.
-            </p>
+            <h3>Your Tasks</h3>
+            {tasksLoading ? (
+              <p>Your tasks are being loaded...</p>
+            ) : (
+              <ListGroup>
+                {tasks.map(task => (
+                  <ListGroupItem>{task.content}</ListGroupItem>
+                ))}
+              </ListGroup>
+            )}
           </Col>
         </Row>
       </Container>
@@ -49,11 +50,14 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.userReducers.currentUser
+  user: state.userReducers.currentUser,
+  tasks: state.taskReducers.tasks,
+  tasksLoading: state.taskReducers.tasksLoading
 });
 
 const mapDispatchToProps = {
-  login
+  login,
+  getMyTasks
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
