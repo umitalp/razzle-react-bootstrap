@@ -21,10 +21,25 @@ export const addNewTask = content => {
     axios
       .post("/api/task/add", { content })
       .then(response => {
-        console.log("Add new task response", response);
+        dispatch(getMyTasks()); // Re-fetch the tasks
+        dispatch({ type: taskTypes.ADD_NEW_TASK_SUCCESS });
       })
       .catch(error => {
-        console.log("Error add new task", error);
+        dispatch({ type: taskTypes.ADD_NEW_TASK_ERROR, error: error });
+      });
+  };
+};
+
+export const removeTask = id => {
+  return dispatch => {
+    axios
+      .post("/api/task/remove", { id })
+      .then(response => {
+        dispatch(getMyTasks()); // Re-fetch the tasks
+        dispatch({ type: taskTypes.REMOVE_TASK_SUCCESS });
+      })
+      .catch(error => {
+        dispatch({ type: taskTypes.REMOVE_TASK_ERROR, error });
       });
   };
 };

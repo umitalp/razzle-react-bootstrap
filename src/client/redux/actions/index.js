@@ -1,5 +1,5 @@
 import { login, logout, signup, getme } from './user.actions'
-import { getMyTasks, addNewTask } from './task.actions'
+import { getMyTasks, addNewTask, removeTask } from './task.actions'
 
 export {
   login,
@@ -7,5 +7,6 @@ export {
   signup,
   getme,
   getMyTasks,
-  addNewTask
+  addNewTask,
+  removeTask
 }

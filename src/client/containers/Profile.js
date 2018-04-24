@@ -1,8 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import { Container, Row, Col, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { connect } from "react-redux";
-import { login, getMyTasks, addNewTask } from "../redux/actions";
+import { login, getMyTasks, addNewTask, removeTask } from "../redux/actions";
 import NewTaskForm from "../components/forms/NewTaskForm";
 
 class Profile extends React.Component {
@@ -14,6 +14,10 @@ class Profile extends React.Component {
     const { task } = values;
     this.props.addNewTask(task);
   };
+
+  deleteTask = id => {
+    this.props.removeTask(id)
+  }
 
   render() {
     const { user, tasks, tasksLoading, error } = this.props;
@@ -45,7 +49,16 @@ class Profile extends React.Component {
               <div>
                 <ListGroup>
                   {tasks.map((task, index) => (
-                    <ListGroupItem key={index}>{task.content}</ListGroupItem>
+                    <ListGroupItem key={index}>
+                      <div className="d-flex justify-content-between" >
+                        <div className="d-flex align-items-center">
+                         {task.content}
+                        </div>
+                        <div>
+                          <Button onClick={() => this.deleteTask(task._id)}>Delete</Button>
+                        </div>
+                      </div>
+                    </ListGroupItem>
                   ))}
                 </ListGroup>
                 <div className="mt-5">
@@ -74,7 +87,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   login,
   getMyTasks,
-  addNewTask
+  addNewTask,
+  removeTask
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

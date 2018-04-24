@@ -22,21 +22,17 @@ taskRouter.post("/add", isLoggedIn, (req, res) => {
       content: req.body.content
     },
     err => {
-      if (err)
-        return res.sendStatus(500).json({ Message: "Cant add new task" });
+      if (err) res.sendStatus(500).json({ Message: "Cant add new task" });
       res.json({ Message: "New task created." });
     }
   );
 });
 
 taskRouter.post("/remove", isLoggedIn, (req, res) => {
-  // Req.user is here
-  console.log("Remove task", req.body, req.user);
-});
-
-taskRouter.post("/update", isLoggedIn, (req, res) => {
-  // Req.user is here
-  console.log("Update task", req.body, req.user);
+  Task.remove({ _id: req.body.id }, function (err) {
+    if (err) res.sendStatus(500).json({ Message: "Cant remove task" });
+    res.json({ Message: "Task succesfully removed." });
+  });
 });
 
 export default taskRouter;
