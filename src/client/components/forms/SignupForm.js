@@ -148,7 +148,7 @@ const SignupForm = props => {
       {_loading ? (
         <Label>Loading</Label>
       ) : (
-        <Button type="submit" className="mt-3 mb-3" outline color="dark">
+        <Button block type="submit" className="mt-3 mb-3" outline color="dark">
           Sign Up
         </Button>
       )}
