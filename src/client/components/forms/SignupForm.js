@@ -11,6 +11,7 @@ import {
   Col,
   Alert
 } from "reactstrap";
+import { countries } from '../../../assets/countries'
 
 const validate = values => {
   const errors = {};
@@ -63,11 +64,38 @@ const renderField = field => {
         placeholder={placeholder}
         id={label}
         {...input}
+        options
       />
       <FormFeedback>{error}</FormFeedback>
     </FormGroup>
   );
 };
+
+const renderSelect = field => {
+  const {
+    input,
+    label,
+    type,
+    options,
+    placeholder,
+    meta: { touched, error }
+  } = field;
+  return (
+    <FormGroup>
+      <Label for={label}>{label}</Label>
+      <Input
+        invalid={touched && error && error.length > 0}
+        type={'select'}
+        id={label}
+        {...input}
+      >
+        <option value={null} disabled >{placeholder}</option>
+        {options.map(option => <option value={option.code}>{option.name}</option>)}
+      </Input>
+      <FormFeedback>{error}</FormFeedback>
+    </FormGroup>
+  );
+}
 
 const SignupForm = props => {
   const { handleSubmit, _error, _loading } = props;
@@ -121,10 +149,11 @@ const SignupForm = props => {
         <Col>
           <Field
             name="country"
-            type="text"
+            type="select"
             label="Country"
             placeholder="Country..."
-            component={renderField}
+            component={renderSelect}
+            options={countries}
           />
         </Col>
       </Row>
