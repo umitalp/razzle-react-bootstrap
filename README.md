@@ -5,6 +5,14 @@ It has [Redux](https://github.com/reactjs/redux) with [Redux-Form](https://githu
 
 The main idea of this repo is to start a server-side rendered React project with some essential features like Bootstrap, form-validation, user authentication, API setup and database handling.
 
+**IMPORTANT:** Dont forget to change the the .env file and gitignore it by yourself, I didn't want to gitignore it to make it usable as a demo.
+
+```javascript
+    RAZZLE_API_URL='/api'
+    RAZZLE_MONGO_URL='your_mongo_db_url'
+    RAZZLE_SESSION_SECRET='your_session_secret'
+```
+
 ### Quick Start
 
 ```bash
